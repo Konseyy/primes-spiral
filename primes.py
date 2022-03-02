@@ -3,10 +3,10 @@ import time
 
 CANVAS_WIDTH = 1600
 CANVAS_HEIGHT = 900
-NODE_SIZE = 1
+NODE_SIZE = 1.5
 coord = {"x": CANVAS_WIDTH/2, "y": CANVAS_HEIGHT/2}
 stepSize = NODE_SIZE*2
-colors = ("#476042", "yellow")
+colors = ("black", "yellow")
 totalPixels = (CANVAS_HEIGHT/(NODE_SIZE*2)
                )**2 if CANVAS_HEIGHT > CANVAS_WIDTH else (CANVAS_WIDTH/(NODE_SIZE*2))**2
 master = Tk()
