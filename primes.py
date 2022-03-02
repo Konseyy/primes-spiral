@@ -3,20 +3,22 @@ import time
 
 CANVAS_WIDTH = 1600
 CANVAS_HEIGHT = 900
-NODE_SIZE = 1.5
+NODE_SIZE = 1
 coord = {"x": CANVAS_WIDTH / 2, "y": CANVAS_HEIGHT / 2}
 stepSize = NODE_SIZE * 2
-colors = ("black", "yellow")
 totalPixels = (CANVAS_HEIGHT /
                (NODE_SIZE * 2))**2 if CANVAS_HEIGHT > CANVAS_WIDTH else (
                    CANVAS_WIDTH / (NODE_SIZE * 2))**2
 master = Tk()
 
-w = Canvas(master, width=CANVAS_WIDTH, height=CANVAS_HEIGHT)
+w = Canvas(master,
+           width=CANVAS_WIDTH,
+           height=CANVAS_HEIGHT,
+           background="black")
 w.pack()
 
 
-def createBox(x, y, NODE_SIZE, fill=colors[0]):
+def createBox(x, y, NODE_SIZE, fill):
 	w.create_rectangle(x - NODE_SIZE,
 	                   y - NODE_SIZE,
 	                   x + NODE_SIZE,
@@ -56,11 +58,12 @@ while ((coord["x"] > 0 or coord["y"] > 0)
 	i += 1
 	if (not (coord["x"] < 0 or coord["y"] < 0 or coord["x"] > CANVAS_WIDTH
 	         or coord["y"] > CANVAS_HEIGHT)):
-		boxCoordinates.append({
-		    "x": coord["x"],
-		    "y": coord["y"],
-		    "fill": colors[1] if isPrime(i) else colors[0]
-		})
+		if (isPrime(i)):
+			boxCoordinates.append({
+			    "x": coord["x"],
+			    "y": coord["y"],
+			    "fill": "yellow"
+			})
 	iterator += 1
 	if (direction == "right"):
 		coord["x"] += stepSize

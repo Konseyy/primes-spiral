@@ -4,11 +4,10 @@ import math
 
 CANVAS_WIDTH = 1920
 CANVAS_HEIGHT = 1080
-NODE_SIZE = 1
+NODE_SIZE = 1.5
 RADIUS_STEP_SIZE = NODE_SIZE / 100
 startCoord = {"x": CANVAS_WIDTH / 2, "y": CANVAS_HEIGHT / 2}
-degreesStepSize = NODE_SIZE
-colors = ("black", "yellow")
+degreesStepSize = 1
 totalPixels = (CANVAS_HEIGHT /
                (NODE_SIZE * 2))**2 if CANVAS_HEIGHT > CANVAS_WIDTH else (
                    CANVAS_WIDTH / (NODE_SIZE * 2))**2
@@ -21,12 +20,12 @@ w = Canvas(master,
 w.pack()
 
 
-def createBox(x, y, NODE_SIZE, fill=colors[0]):
-	w.create_rectangle(x - NODE_SIZE,
-	                   y - NODE_SIZE,
-	                   x + NODE_SIZE,
-	                   y + NODE_SIZE,
-	                   fill=fill)
+def createBox(x, y, NODE_SIZE, fill):
+	w.create_oval(x - NODE_SIZE,
+	              y - NODE_SIZE,
+	              x + NODE_SIZE,
+	              y + NODE_SIZE,
+	              fill=fill)
 
 
 def isPrime(num):
@@ -65,7 +64,7 @@ while ((coord["x"] > 0 or coord["y"] > 0)
 			boxCoordinates.append({
 			    "x": coord["x"],
 			    "y": coord["y"],
-			    "fill": colors[1] if isPrime(i) else colors[0]
+			    "fill": "yellow"
 			})
 	coord = startCoord
 	radius += RADIUS_STEP_SIZE
