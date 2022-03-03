@@ -1,8 +1,8 @@
 from tkinter import *
 import time
 
-CANVAS_WIDTH = 1600
-CANVAS_HEIGHT = 900
+CANVAS_WIDTH = 1920
+CANVAS_HEIGHT = 1080
 NODE_SIZE = 1
 coord = {"x": CANVAS_WIDTH / 2, "y": CANVAS_HEIGHT / 2}
 stepSize = NODE_SIZE * 2
@@ -26,20 +26,20 @@ def createBox(x, y, NODE_SIZE, fill):
 	                   fill=fill)
 
 
+def sqrt(number):
+	for i in range(number):
+		if (i * i > number):
+			return i
+	return 0
+
+
 def isPrime(num):
-	if (num < 2):
+	if (num < 3):
+		if (num == 2):
+			return True
 		return False
-	if (num == 2):
-		return True
 	if (num % 2 == 0):
 		return False
-
-	def sqrt(number):
-		for i in range(number):
-			if (i * i > number):
-				return i
-		return 0
-
 	for i in range(3, sqrt(num) + 1, 2):
 		if (num % i == 0):
 			return False
